@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/whilt">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/color_title_bar">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_centerInParent="true"
+            android:gravity="center"
+            android:text="待办事项"
+            android:textColor="#ffffff"
+            android:textSize="18sp" />
+
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        >
+
+        <RelativeLayout
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/todayText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:text="2019年4月"
+                android:drawableRight="@mipmap/arraw_down"
+                android:drawablePadding="6dp"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:textColor="@color/color_333333"
+                />
+
+            <TextView
+                android:id="@+id/toToday"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/calendar_today_shape"
+                android:text="今天"
+                android:layout_centerVertical="true"
+                android:layout_alignParentRight="true"
+                android:paddingTop="3dp"
+                android:paddingBottom="3dp"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:textColor="@color/color_3853e8"
+                android:textSize="12sp"
+                />
+
+        </RelativeLayout>
+
+        <com.haibin.calendarview.CalendarLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            app:default_status="expand"
+            app:calendar_show_mode="both_month_week_view"
+            app:calendar_content_view_id="@+id/calendarRecyclerView">
+
+            <com.haibin.calendarview.CalendarView
+                android:id="@+id/calendarView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                app:current_day_lunar_text_color="#999999"
+                app:current_day_text_color="#333333"
+                app:current_month_lunar_text_color="#999999"
+                app:current_month_text_color="#333333"
+                app:day_text_size="@dimen/textSize_14sp"
+                app:lunar_text_size="@dimen/textSize_10sp"
+                app:min_year="2019"
+                app:month_view="com.app.shop.mylibrary.widgts.calendarview.MeiZuMonthView"
+                app:month_view_auto_select_day="last_select_day_ignore_current"
+                app:month_view_show_mode="mode_only_current"
+                app:other_month_text_color="#e1e1e1"
+                app:scheme_text=""
+                app:scheme_text_color="#333333"
+                app:scheme_theme_color="#00574B"
+                app:select_mode="default_mode"
+                app:selected_lunar_text_color="#ffffff"
+                app:selected_text_color="#ffffff"
+                app:selected_theme_color="#ffffff"
+                app:week_background="#ffffff"
+                app:week_bar_view="com.app.shop.mylibrary.widgts.calendarview.CustomWeekBar"
+                app:week_start_with="sun"
+                app:week_text_color="#333333"
+                app:week_view="com.app.shop.mylibrary.widgts.calendarview.MeizuWeekView"
+                app:week_view_scrollable="true" />
+
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/calendarRecyclerView"
+                android:background="@color/whilt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                />
+
+
+        </com.haibin.calendarview.CalendarLayout>
+
+    </LinearLayout>
+</LinearLayout>

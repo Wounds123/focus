@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/color_theme_bg"
+    android:fitsSystemWindows="true"
+    android:focusable="true"
+    android:focusableInTouchMode="true"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:id="@+id/rela_tool_bar"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/color_3853e8">
+
+        <ImageView
+            android:id="@+id/imgv_back"
+            android:layout_width="40dp"
+            android:layout_height="match_parent"
+            android:scaleType="centerInside"
+            android:src="@mipmap/arrow_white_left" />
+
+        <TextView
+            android:id="@+id/tv_titleBar_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="DDL类型"
+            android:textColor="@color/whilt"
+            android:textSize="@dimen/textSize_18sp" />
+
+    </RelativeLayout>
+
+
+    <EditText
+        android:id="@+id/edt_name"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/whilt"
+        android:gravity="center_vertical"
+        android:hint="输入类型"
+        android:paddingLeft="12dp"
+        android:textColor="@color/color_333333"
+        android:textSize="@dimen/textSize_14sp" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:background="@color/color_f2f2f2" />
+
+    <TextView
+        android:id="@+id/btn_done"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginLeft="40dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginRight="40dp"
+
+        android:gravity="center"
+        android:text="完成"
+        android:textColor="@color/whilt"
+        android:background="@drawable/ripple_bg"
+        android:textSize="@dimen/textSize_16sp" />
+
+</LinearLayout>

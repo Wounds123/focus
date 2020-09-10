@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<litepal>
+
+    <!--数据库名称-->
+    <dbname value="litepal"></dbname>
+
+    <!--数据库版本号-->
+    <version value="1"></version>
+
+
+    <!--数据库建表-->
+    <list>
+        <mapping class="com.app.shop.mylibrary.beans.UserBean"></mapping>
+        <mapping class="com.app.demo.beans.MessageBean"></mapping>
+        <mapping class="com.app.demo.beans.MessageTypeBean"></mapping>
+    </list>
+</litepal>

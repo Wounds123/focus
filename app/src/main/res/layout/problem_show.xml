@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+android:orientation="vertical"
+android:layout_width="match_parent"
+android:layout_height="match_parent">
+
+<uk.co.senab.photoview.PhotoView
+    android:id="@+id/picture"
+    android:layout_width="match_parent"
+    android:layout_height="0dp"
+    android:layout_weight="13"
+    android:scaleType="fitCenter"
+    android:adjustViewBounds="true"/>
+
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="0dp"
+    android:layout_weight="1"
+    android:orientation="horizontal"
+    android:gravity="center">
+
+    <Button
+        android:id="@+id/answer"
+        android:layout_width="150dp"
+        android:layout_height="40dp"
+        android:layout_marginRight="30dp"
+        android:text="Answer"
+        android:background="@drawable/lock_button_shape_round"/>
+
+    <Button
+        android:id="@+id/question"
+        android:layout_width="150dp"
+        android:layout_height="40dp"
+        android:text="Question"
+        android:background="@drawable/lock_button_shape_round"/>
+
+</LinearLayout>
+
+
+
+
+
+
+
+
+</LinearLayout>
+

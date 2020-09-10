@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/big_window_layout"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/lock_screen"
+    android:gravity="center_horizontal">
+
+
+    <RelativeLayout
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="225dp"
+        android:layout_centerHorizontal="true">
+
+        <TextView
+            android:id="@+id/count"
+            android:textSize="75dp"
+            android:text="59"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:gravity="center"/>
+        <TextView
+            android:id="@+id/mao"
+            android:textSize="75dp"
+            android:text=":"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"/>
+        <TextView
+            android:id="@+id/count2"
+            android:textSize="75dp"
+            android:text="59"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:gravity="center"/>
+
+    </RelativeLayout>
+    <TextView
+        android:id="@+id/succeed"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:textSize="70dp"
+        android:text="计时完毕"
+        android:visibility="invisible"/>
+
+
+    <Button
+        android:id="@+id/close"
+        android:layout_width="100dip"
+        android:layout_height="40dip"
+        android:layout_alignParentBottom="true"
+        android:layout_centerInParent="true"
+        android:layout_centerVertical="true"
+        android:layout_marginTop="12dip"
+        android:layout_marginBottom="32dp"
+        android:text="退出锁屏" />
+
+</RelativeLayout>

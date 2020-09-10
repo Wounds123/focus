@@ -1,0 +1,4 @@
+include ':diff_menu'
+include ':library'
+include ':app', ':mylibrary'
+rootProject.name='demo'
