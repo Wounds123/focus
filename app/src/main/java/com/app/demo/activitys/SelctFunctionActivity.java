@@ -53,6 +53,13 @@ public class SelctFunctionActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(com.rance.sectormenu.R.layout.button_view);
+        if(ContextCompat.checkSelfPermission(SelctFunctionActivity.this, Manifest.permission.WAKE_LOCK) != PackageManager.PERMISSION_GRANTED){
+            ActivityCompat.requestPermissions(this,
+                    new String[]{Manifest.permission.WAKE_LOCK},
+                    1);
+            Log.d("test", "1566");
+        }
+
         initData();
         initBottomSectorMenuButton();
 //        initTopSectorMenuButton();
