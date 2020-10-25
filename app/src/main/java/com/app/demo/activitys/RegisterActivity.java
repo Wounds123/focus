@@ -144,13 +144,13 @@ public class RegisterActivity extends BaseActivity {
                     conect(edtNo.getText().toString());
                     break;
                 case 2:
-                    ToastUtil.showToast(RegisterActivity.this, "该用户已存在或网络断开");
+                    Toast.makeText(RegisterActivity.this, "该用户已存在或网络断开",Toast.LENGTH_SHORT).show();
                     break;
                 case 3:
                     succeed_re();
                     break;
                 case 4:
-                    ToastUtil.showToast(RegisterActivity.this, "注册失败，请检查网络");
+                    Toast.makeText(RegisterActivity.this, "注册失败，请检测网络",Toast.LENGTH_SHORT).show();
                     break;
                 default:break;
 
