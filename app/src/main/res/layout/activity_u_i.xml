@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:app="http://schemas.android.com/apk/res-auto"
+xmlns:tools="http://schemas.android.com/tools"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+android:orientation="vertical"
+android:background="#76acf8"
+tools:context=".MainActivity">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:background="@drawable/moutain"
+        android:orientation="vertical">
+
+
+        <TextView
+            android:id="@+id/zhuanzhudu"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="30dp"
+            android:text="专\n注\n度"
+            android:textColor="#ffeeff"
+
+            android:textSize="40dp" />
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/succeed_rate"
+        android:layout_width="275dp"
+        android:layout_height="60dp"
+        android:layout_gravity="center"
+        android:background="@drawable/lock_button_shape_round2"
+        android:layout_marginTop="40dp"
+        android:text="0/0"
+        android:gravity="center"
+        android:textColor="#ffeeff"
+        android:textSize="30dp" />
+
+    <LinearLayout
+
+    android:layout_width="250dp"
+    android:layout_height="80dp"
+    android:orientation="horizontal"
+        android:layout_gravity="center"
+        android:layout_marginTop="40dp"
+        android:background="@drawable/get_time_background"
+        >
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        android:layout_weight="1">
+
+        <EditText
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:id="@+id/fen"
+            android:gravity="center"
+            android:layout_weight="4"
+            android:inputType="number"
+            android:singleLine="true"/>
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="分"/>
+
+
+    </LinearLayout>
+
+        <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        android:layout_weight="1"
+        >
+
+        <EditText
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/second"
+            android:gravity="center"
+            android:layout_weight="4"
+            android:inputType="number"
+            android:singleLine="true"/>
+
+        <TextView
+
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="秒"/>
+    </LinearLayout>
+
+</LinearLayout>
+
+    <ImageView
+        android:layout_width="60dp"
+        android:layout_height="15dp"
+        android:id="@+id/dot"
+        android:layout_gravity="right"
+        android:layout_marginTop="5dp"
+        android:layout_marginRight="80dp"
+        android:src="@drawable/dot"/>
+
+    <Button
+        android:id="@+id/start_float_window"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="5dp"
+        android:background="@drawable/lock_button_shape_round1"
+        android:text="开始锁屏" />
+
+    <Button
+        android:id="@+id/rank"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/lock_button_shape_round1"
+        android:text="专注排行榜" />
+
+
+</LinearLayout>

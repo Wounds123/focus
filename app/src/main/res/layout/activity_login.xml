@@ -43,7 +43,7 @@
             android:layout_height="match_parent"
             android:background="@null"
             android:hint="用户名"
-            android:inputType="phone"
+
             android:maxLength="11"
             android:textColor="#43496A"
             android:textColorHint="#bbbbbb"
@@ -70,7 +70,7 @@
             android:layout_height="match_parent"
             android:background="@null"
             android:hint="密码"
-            android:inputType="phone"
+
             android:maxLength="11"
             android:textColor="#43496A"
             android:textColorHint="#bbbbbb"

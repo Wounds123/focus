@@ -11,10 +11,16 @@ import android.Manifest;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -34,20 +40,22 @@ import com.app.shop.mylibrary.utils.UserManager;
 import com.rance.library.ButtonData;
 import com.rance.library.ButtonEventListener;
 import com.rance.library.SectorMenuButton;
-import com.rance.sectormenu.MainActivity;
 
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import cn.bmob.v3.Bmob;
 import de.greenrobot.event.EventBus;
 
 public class SelctFunctionActivity extends BaseActivity {
 
 
+    private RelativeLayout ground;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,65 +66,30 @@ public class SelctFunctionActivity extends BaseActivity {
                     new String[]{Manifest.permission.WAKE_LOCK},
                     1);
             Log.d("test", "1566");
-        }
 
+        }
+        Bmob.initialize(this, "e01dc61baeb809789bfb422d9e1ca30c");
+        ground = (RelativeLayout) findViewById(R.id.ground);
+        ground.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                toPicture();
+                return false;
+            }
+        });
         initData();
         initBottomSectorMenuButton();
-//        initTopSectorMenuButton();
-//        initRightSectorMenuButton();
-//        initCenterSectorMenuButton();
+
     }
 
-//    private void initTopSectorMenuButton() {
-//        SectorMenuButton sectorMenuButton = (SectorMenuButton) findViewById(R.id.top_sector_menu);
-//        final List<ButtonData> buttonDatas = new ArrayList<>();
-//        int[] drawable = {R.mipmap.like, R.mipmap.mark,
-//                R.mipmap.search, R.mipmap.copy};
-//        for (int i = 0; i < 4; i++) {
-//            ButtonData buttonData = ButtonData.buildIconButton(this, drawable[i], 0);
-//            buttonData.setBackgroundColorId(this, R.color.colorAccent);
-//            buttonDatas.add(buttonData);
-//        }
-//        sectorMenuButton.setButtonDatas(buttonDatas);
-//        setListener(sectorMenuButton);
-//    }
-//
-//    private void initRightSectorMenuButton() {
-//        SectorMenuButton sectorMenuButton = (SectorMenuButton) findViewById(R.id.right_sector_menu);
-//        final List<ButtonData> buttonDatas = new ArrayList<>();
-//        int[] drawable = {R.mipmap.like, R.mipmap.mark,
-//                R.mipmap.search, R.mipmap.copy};
-//        for (int i = 0; i < 4; i++) {
-//            ButtonData buttonData = ButtonData.buildIconButton(this, drawable[i], 0);
-//            buttonData.setBackgroundColorId(this, R.color.colorAccent);
-//            buttonDatas.add(buttonData);
-//        }
-//        sectorMenuButton.setButtonDatas(buttonDatas);
-//        setListener(sectorMenuButton);
-//    }
-//
-//    private void initCenterSectorMenuButton() {
-//        SectorMenuButton sectorMenuButton = (SectorMenuButton) findViewById(R.id.center_sector_menu);
-//        final List<ButtonData> buttonDatas = new ArrayList<>();
-//        int[] drawable = {R.mipmap.like, R.mipmap.mark,
-//                R.mipmap.search, R.mipmap.copy, R.mipmap.settings,
-//                R.mipmap.heart, R.mipmap.info, R.mipmap.record,
-//                R.mipmap.refresh};
-//        for (int i = 0; i < 9; i++) {
-//            ButtonData buttonData = ButtonData.buildIconButton(this, drawable[i], 0);
-//            buttonData.setBackgroundColorId(this, R.color.colorAccent);
-//            buttonDatas.add(buttonData);
-//        }
-//        sectorMenuButton.setButtonDatas(buttonDatas);
-//        setListener(sectorMenuButton);
-//    }
+
 
     private void initBottomSectorMenuButton() {
         SectorMenuButton sectorMenuButton = (SectorMenuButton) findViewById(com.rance.sectormenu.R.id.bottom_sector_menu);
         final List<ButtonData> buttonDatas = new ArrayList<>();
         int[] drawable = {com.rance.sectormenu.R.mipmap.like, com.rance.sectormenu.R.mipmap.lock,
-                com.rance.sectormenu.R.mipmap.data, com.rance.sectormenu.R.mipmap.problem};
-        for (int i = 0; i < 4; i++) {
+                com.rance.sectormenu.R.mipmap.data, com.rance.sectormenu.R.mipmap.problem,com.rance.sectormenu.R.mipmap.book};
+        for (int i = 0; i < 5; i++) {
             ButtonData buttonData = ButtonData.buildIconButton(this, drawable[i], 0);
             buttonData.setBackgroundColorId(this, com.rance.sectormenu.R.color.colorAccent);
             buttonDatas.add(buttonData);
@@ -139,6 +112,10 @@ public class SelctFunctionActivity extends BaseActivity {
                 }
                 else if(index==3){
                     Intent intent = new Intent(SelctFunctionActivity.this,com.app.problem_collect.Problem_collect.class);
+                    startActivity(intent);
+                }
+                else if(index==4){
+                    Intent intent = new Intent(SelctFunctionActivity.this,com.app.problem_collect.Problem_review.class);
                     startActivity(intent);
                 }
                // showToast("button" + index);
@@ -173,6 +150,37 @@ public class SelctFunctionActivity extends BaseActivity {
             showActivity(this, LoginActivity.class);
             finish();
 
+        }
+    }
+
+    private void toPicture() {
+        Intent intent = new Intent(Intent.ACTION_PICK);  //跳转到 ACTION_IMAGE_CAPTURE
+        intent.setType("image/*");
+        startActivityForResult(intent,100);
+
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        //判断返回码不等于0
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode != RESULT_CANCELED) {    //RESULT_CANCELED = 0(也可以直接写“if (requestCode != 0 )”)
+            //读取返回码
+            switch (requestCode) {
+                case 100:   //相册返回的数据（相册的返回码）
+                    Uri uri01 = data.getData();
+                    try {
+                        Bitmap bitmap = BitmapFactory.decodeStream(getContentResolver().openInputStream(uri01));
+                        Drawable drawable =new BitmapDrawable(bitmap);
+                        ground.setBackground(drawable);
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+
+                    break;
+                default:
+                    break;
+            }
         }
     }
 

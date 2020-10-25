@@ -7,10 +7,37 @@
     android:orientation="vertical"
     tools:context=".MainActivity">
 
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:orientation="vertical"
+        android:background="@drawable/lock_start_ripper">
+
+        <TextView
+            android:id="@+id/zhuanzhudu"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_alignParentTop="true"
+            android:text="专注度"
+            android:textSize="50dp"
+            android:textColor="#d2691e"/>d
+
+        <TextView
+            android:id="@+id/succeed_rate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="0/0"
+            android:textSize="50dp"
+            android:layout_below="@+id/zhuanzhudu"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="20dp"
+            android:textColor="#b22222"/>
+    </RelativeLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="60dp"
         android:orientation="horizontal">
 
         <LinearLayout
@@ -21,7 +48,7 @@
 
             <EditText
                 android:layout_width="0dp"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:id="@+id/fen"
                 android:gravity="center"
                 android:layout_weight="4"
@@ -44,7 +71,7 @@
 
         <EditText
             android:layout_width="0dp"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:id="@+id/second"
             android:gravity="center"
             android:layout_weight="4"
@@ -52,6 +79,7 @@
             android:singleLine="true"/>
 
         <TextView
+
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
@@ -60,15 +88,17 @@
         </LinearLayout>
 
     </LinearLayout>
-
-
-
     <Button
         android:id="@+id/start_float_window"
-        android:layout_width="match_parent"
+        android:layout_width="300dp"
         android:layout_height="wrap_content"
+        android:layout_gravity="center"
         android:text="开始锁屏"
-        android:background="@drawable/lock_ripple_bg"/>
+        android:background="@drawable/lock_button_shape_round" />
+
+
+
+
 
 
 

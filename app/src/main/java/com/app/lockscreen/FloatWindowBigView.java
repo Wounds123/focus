@@ -1,6 +1,8 @@
 package com.app.lockscreen;
 
+import android.app.Activity;
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Handler;
 import android.os.Message;
 import android.util.Log;
@@ -15,6 +17,7 @@ import com.app.demo.R;
 
 import java.util.Timer;
 import java.util.TimerTask;
+import android.content.pm.PackageManager;
 
 public class FloatWindowBigView extends LinearLayout {
 
@@ -29,6 +32,8 @@ public class FloatWindowBigView extends LinearLayout {
     private TextView txtViewf;
     private TextView mao;
     private TextView succeed;
+
+    private int fen_count;
     MyApplication myApplication=MyApplication.getInstance();
     Timer timer = new Timer();
 
@@ -47,7 +52,7 @@ public class FloatWindowBigView extends LinearLayout {
         txtViewf=(TextView)findViewById(R.id.count);
         mao=(TextView)findViewById(R.id.mao);
         succeed=(TextView)findViewById(R.id.succeed) ;
-        fen=myApplication.getFen();
+        fen_count=fen=myApplication.getFen();
         seconds=myApplication.getMiao();
         txtViewf.setText(""+fen);
         txtViews.setText(""+seconds);
@@ -57,6 +62,10 @@ public class FloatWindowBigView extends LinearLayout {
         close.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
+                if(fen!=0)
+                    myApplication.addFail();
+                else
+                    myApplication.addSucceed();
                 // 点击关闭悬浮窗的时候，移除所有悬浮窗
                 MyWindowManager.removeBigWindow(context);
             }

@@ -39,7 +39,11 @@ import com.app.shop.mylibrary.utils.ToastUtil;
 
 import java.io.File;
 import java.io.IOException;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Date;
+
 
 public class Problem_collect extends AppCompatActivity {
 
@@ -63,6 +67,9 @@ public class Problem_collect extends AppCompatActivity {
     private String new_gp_name=null;
 
 
+
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -72,6 +79,8 @@ public class Problem_collect extends AppCompatActivity {
         lol_hero_list = (ExpandableListView) findViewById(R.id.lol_hero_list);
 
 
+
+        //获取需要的权限
         if(ContextCompat.checkSelfPermission(Problem_collect.this, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED)
             ActivityCompat.requestPermissions(this,
                     new String[]{Manifest.permission.CAMERA,Manifest.permission.WRITE_EXTERNAL_STORAGE},
@@ -79,12 +88,6 @@ public class Problem_collect extends AppCompatActivity {
 
 
 
-
-
-//        if(ContextCompat.checkSelfPermission(Problem_collect.this, Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED)
-//            ActivityCompat.requestPermissions(this,
-//                    new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE},
-//                    1);
 
 
         //设置分组添加按钮**********************************************************************************
@@ -106,6 +109,8 @@ public class Problem_collect extends AppCompatActivity {
         gData = new ArrayList<GroupBean>();
         iData = new ArrayList<ArrayList<HeroBean>>();
 
+
+        //初始化错题列表，从本地数据库取出错题数据
         lData = new ArrayList<HeroBean>();
         Cursor cursorgp = db.query("gp_divide", null, null, null, null, null, null);
         Cursor cursor = db.query("problem", null, null, null, null, null, null);
@@ -132,6 +137,7 @@ public class Problem_collect extends AppCompatActivity {
         }
         cursor.close();
         cursorgp.close();
+        //初始化错题列表，从本地数据库取出错题数据
 
 
 
@@ -176,9 +182,10 @@ public class Problem_collect extends AppCompatActivity {
                     values1.put("Groupname",new_gp_name);
                     db.insert("gp_divide",null,values1);
                     values2.put("Groupname",new_gp_name);
-                    values2.put("Childname","官方错题（雾）");
+                    values2.put("Childname","长按分组名新增错题");
                     values2.put("Pic_url","nothing");
                     values2.put("personid","nothing");
+                    values2.put("Date","3000-01-01");
                     db.insert("problem",null,values2);
                     alert.dismiss();
                 }
@@ -221,13 +228,18 @@ public class Problem_collect extends AppCompatActivity {
             final int childPosition = ExpandableListView.getPackedPositionChild(packedPosition);
             //长按的是group的时候，childPosition = -1
 
+            //长按错题子项删除或修改答案
             if (childPosition != -1) {
                 initPopWindow(view, groupPosition, childPosition);
 
                 lol_hero_list.collapseGroup(groupPosition);
                 lol_hero_list.expandGroup(groupPosition);
 
-            } else {
+            }
+            //长按错题子项删除或修改答案
+
+            //长按组名增加错题
+            else {
                 Intent intent = new Intent(Problem_collect.this, Problem_Add.class);
                 Bundle bd = new Bundle();
                 bd.putInt("GP", groupPosition);
@@ -235,6 +247,7 @@ public class Problem_collect extends AppCompatActivity {
                 startActivityForResult(intent, 1);
 
             }
+            //长按组名增加错题
 
            /* if(editText.equals("nothing")){
                 Toast.makeText(getApplicationContext(), "创建取消", Toast.LENGTH_SHORT).show();
@@ -280,6 +293,9 @@ public class Problem_collect extends AppCompatActivity {
         popWindow.showAsDropDown(v, 50, 0);
 
         //设置popupWindow里的按钮的事件
+
+
+        //删除错题
         btn_xixi.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -300,6 +316,9 @@ public class Problem_collect extends AppCompatActivity {
                 popWindow.dismiss();
             }
         });
+        //删除错题
+
+        //修改答案
         btn_ans.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -328,6 +347,7 @@ public class Problem_collect extends AppCompatActivity {
 
             }
         });
+        //修改答案
 
 
     }
@@ -348,14 +368,20 @@ public class Problem_collect extends AppCompatActivity {
                     //ArrayList<HeroBean> add_new = iData.get(gp);
                     //add_new.add(new HeroBean(bd.getString("name"), bd.getString("uri")));
                     msAdapter.add_ch(bd.getString("name"),bd.getString("uri"),gp);
+                    DateTimeFormatter fmt = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+                    LocalDate today = LocalDate.now();
+                    today=today.plusDays(1);
                     ContentValues values1 = new ContentValues();
                     values1.put("Groupname", gData.get(gp).getName());
                     values1.put("Childname",bd.getString("name"));
                     values1.put("Pic_url",bd.getString("uri"));
                     values1.put("personid",ssssss);
-
+                    String dateStr = today.format(fmt);
+                    values1.put("Date",dateStr);
+                    values1.put("Level",0);
                     //参数依次是：表名，强行插入null值得数据列的列名，一行记录的数据
                     db.insert("problem", null, values1);
+
                     //Log.d("MainActivity", bd.getString("uri"));
                     lol_hero_list.collapseGroup(gp);
                     lol_hero_list.expandGroup(gp);

@@ -1,6 +1,7 @@
 package com.app.problem_collect;
 
 import android.content.Context;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
@@ -31,6 +32,8 @@ public class Problem_Show extends AppCompatActivity {
        // Log.d("MainActivity",que);
         ans=bd.getString("uri_ans");
         //quri=Uri.parse(que);
+
+
 
 
         Button question=(Button)findViewById(R.id.question);
@@ -69,5 +72,12 @@ public class Problem_Show extends AppCompatActivity {
                 }
             }
         });
+    }
+
+    @Override
+    public void onBackPressed() {
+        //TODO something
+        finish();
+        super.onBackPressed();
     }
 }

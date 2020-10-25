@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="50dp"
+    >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:text="用户名"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:textSize="10dp"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="2"
+            android:text="类型"
+            android:textColor="#000000"
+            android:gravity="center"
+            android:textSize="20dp"
+            android:id="@+id/user_name"/>
+
+    </LinearLayout>
+
+
+            <TextView
+                android:text="金额"
+                android:id="@+id/lock_time"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:textColor="#000000"
+                android:layout_weight="1"
+                android:textSize="25dp"
+                android:gravity="center" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:textColor="#000000"
+                android:layout_weight="1"
+                android:textSize="25dp"
+                android:gravity="center"
+                android:text="2020-10-19"
+                android:id="@+id/rank_num"/>
+
+
+    </LinearLayout>
+
+</LinearLayout>

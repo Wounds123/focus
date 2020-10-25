@@ -119,7 +119,7 @@ public class MsExpandableListAdapter extends BaseExpandableListAdapter {
         }
         gData.add(new GroupBean(str));
         lData=new ArrayList<HeroBean>();
-        lData.add(new HeroBean("官方错题（雾）"));
+        lData.add(new HeroBean("长按分组名新增错题"));
         iData.add(lData);
 
         notifyDataSetChanged();

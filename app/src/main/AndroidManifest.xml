@@ -1,36 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.app.demo"
-    xmlns:tools="http://schemas.android.com/tools">
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.app.demo">
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
-    <uses-permission android:name="android.permission.CAMERA"/>
+    <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
-    <uses-permission android:name="android.permission.WAKE_LOCK"/>
-    <!--允许联网 -->
-    <uses-permission android:name="android.permission.INTERNET" />
-    <!--获取GSM（2g）、WCDMA（联通3g）等网络状态的信息  -->
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    <!--获取wifi网络状态的信息 -->
-    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
-    <!--保持CPU 运转，屏幕和键盘灯有可能是关闭的,用于文件上传和下载 -->
-    <uses-permission android:name="android.permission.WAKE_LOCK" />
-    <!--允许读取手机状态 用于创建BmobInstallation-->
+    <uses-permission android:name="android.permission.WAKE_LOCK" /> <!-- 允许联网 -->
+    <uses-permission android:name="android.permission.INTERNET" /> <!-- 获取GSM（2g）、WCDMA（联通3g）等网络状态的信息 -->
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" /> <!-- 获取wifi网络状态的信息 -->
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" /> <!-- 保持CPU 运转，屏幕和键盘灯有可能是关闭的,用于文件上传和下载 -->
+    <uses-permission android:name="android.permission.WAKE_LOCK" /> <!-- 允许读取手机状态 用于创建BmobInstallation -->
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+
     <application
-        tools:replace="android:icon"
         android:name=".MyApplication"
         android:allowBackup="true"
         android:icon="@mipmap/focus_logo"
         android:label="@string/app_name"
-
         android:roundIcon="@mipmap/focus_logo"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
-        android:usesCleartextTraffic="true">
-        <activity android:name="com.app.demo.activitys.SelctFunctionActivity">
+        android:usesCleartextTraffic="true"
+        tools:replace="android:icon">
+        <activity android:name="com.app.problem_collect.Problem_review"></activity>
+        <activity android:name=".activitys.SelctFunctionActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -57,14 +53,13 @@
             android:name=".activitys.RegisterActivity"
             android:theme="@style/Transparent" />
         <activity android:name=".activitys.LoginActivity" />
-        <activity android:name=".MainActivity"/>
-
-
+        <activity android:name=".MainActivity" />
         <activity android:name="com.app.problem_collect.Problem_Add" />
         <activity android:name="com.app.problem_collect.Problem_collect" />
         <activity android:name="com.app.problem_collect.Problem_Show" />
         <activity android:name="com.app.lockscreen.Lock_Screen" />
         <activity android:name="com.app.lockscreen.time_store" />
+        <activity android:name="com.app.lockscreen.Lock_Rank" />
 
         <provider
             android:name="androidx.core.content.FileProvider"
@@ -75,11 +70,9 @@
                 android:name="android.support.FILE_PROVIDER_PATHS"
                 android:resource="@xml/rc_file_path" />
         </provider>
-
         <provider
             android:name="cn.bmob.v3.util.BmobContentProvider"
-            android:authorities="com.app.demo.BmobContentProvider">
-        </provider>
+            android:authorities="com.app.demo.BmobContentProvider"></provider>
     </application>
 
 </manifest>

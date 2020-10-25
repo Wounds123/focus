@@ -1,22 +1,41 @@
 package com.app.problem_collect;
 
+import java.util.Date;
+
 public class HeroBean {
     //private int icon;
+    private String gp_name;
     private String name;
     private String quri="nothing";
     private String auri="nothing";
+
+
+    public String getGp_name() {
+        return gp_name;
+    }
+
+    public void setGp_name(String gp_name) {
+        this.gp_name = gp_name;
+    }
 
     public HeroBean() {
     }
 
 
+    public HeroBean(String gp_name,String name, String quri, String auri) {
+        this.gp_name=gp_name;
+        this.auri=auri;
+        this.quri=quri;
+        this.name = name;
+    }
 
-    public HeroBean(String name,String quri,String auri) {
+    public HeroBean(String name, String quri, String auri) {
         //this.icon = icon;
         this.auri=auri;
         this.quri=quri;
         this.name = name;
     }
+
 
     public HeroBean(String name,String quri) {
         this.quri=quri;

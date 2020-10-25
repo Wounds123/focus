@@ -26,6 +26,7 @@
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
             android:text="DDL详情"
+
             android:textColor="@color/whilt"
             android:textSize="@dimen/textSize_18sp" />
 

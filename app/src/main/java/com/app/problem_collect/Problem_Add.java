@@ -1,8 +1,10 @@
 package com.app.problem_collect;
 
 import android.Manifest;
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Build;
@@ -37,6 +39,7 @@ public class Problem_Add extends AppCompatActivity {
     String str="nothing";
     public static  final int TAKE_PHOTO=1;
     private Uri imageUri;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -124,4 +127,7 @@ public class Problem_Add extends AppCompatActivity {
             default:break;
         }
     }
+
+
+
 }

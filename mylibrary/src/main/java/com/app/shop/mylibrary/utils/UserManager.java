@@ -1,15 +1,24 @@
 package com.app.shop.mylibrary.utils;
 
 import android.content.Context;
+import android.os.Handler;
+import android.os.Message;
+import android.widget.Toast;
 
 import com.app.shop.mylibrary.beans.UserBean;
+import com.app.shop.mylibrary.beans.User_Name_List;
 import com.orhanobut.logger.Logger;
 
 import org.litepal.crud.DataSupport;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.LinkedList;
 import java.util.List;
+
+import cn.bmob.v3.BmobQuery;
+import cn.bmob.v3.exception.BmobException;
+import cn.bmob.v3.listener.FindListener;
 
 /**
  * @anthor : 大海
@@ -27,6 +36,7 @@ public class UserManager {
      *
      * @return
      */
+
     public static boolean isLogin(Context context) {
 
         return !StringUtil.isEmpty(SharedPreferencesUtil.getData(context, "user", "user_id", ""));
@@ -133,6 +143,7 @@ public class UserManager {
 
     public static boolean isHaveUser(String id, int type) {
 
+
         List<UserBean> list_all = DataSupport.findAll(UserBean.class);
         List<UserBean> list = new ArrayList<>();
         for (int i = 0; i < list_all.size(); i++) {
@@ -175,4 +186,8 @@ public class UserManager {
     public void getUser() {
         List<UserBean> list = DataSupport.findAll(UserBean.class);
     }
+
+
+
+
 }

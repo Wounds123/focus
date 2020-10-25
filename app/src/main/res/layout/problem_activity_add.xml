@@ -10,10 +10,11 @@
         android:layout_height="wrap_content"
         android:textSize="18sp"
         android:hint="请输入名称"
-        android:inputType="text"/>
+        android:inputType="text"
+        android:layout_marginTop="40dp"/>
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="450dp"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:gravity="center">
@@ -25,18 +26,18 @@
             android:layout_height="40dp"
             android:layout_marginRight="30dp"
             android:textSize="16sp"
-            android:text="Add"
+            android:text="添加题目"
             android:background="@drawable/lock_button_shape_round"/>
 
         <Button
             android:id="@+id/btn_cancle"
             android:layout_width="150dp"
             android:layout_height="40dp"
-
             android:background="@drawable/lock_button_shape_round"
             android:gravity="center"
-            android:text="Cancle"
-            android:textSize="16sp" />
+            android:textSize="16sp"
+            android:text="取消"
+             />
     </LinearLayout>
 
 </LinearLayout>
